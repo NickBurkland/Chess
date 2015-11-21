@@ -5,12 +5,14 @@ public abstract class GamePeice {
     protected boolean alive = true;
     protected Team team;
     protected String image;
+    protected GamePeice[];
 	
-    public GamePeice(Location location, Team team, String image) {
+    public GamePeice(Location location, Team team, String image, GamePeice[] peices) {
 	super();
 	this.location = location;
 	this.team = team;
 	this.image = image;
+	this.peices = peieces;
     }
 	
     public abstract void move(Location l);

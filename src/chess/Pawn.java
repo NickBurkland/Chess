@@ -1,8 +1,8 @@
 package chess;
 
 public class Pawn extends GamePiece{
-    public Pawn(Location location, Team team){
-	super(location, team, "P");
+    public Pawn(Location location, Team team, GamePiece [] pieces){
+	super(location, team, "P", peices);
     }
 
     public ArrayList<Location> getMovements(){
