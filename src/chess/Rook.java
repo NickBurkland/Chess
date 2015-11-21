@@ -2,6 +2,8 @@ package chess;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Rook extends GamePiece {
 
 	public Rook(Location location, Team team, GamePiece[][] pieces) {
@@ -10,7 +12,12 @@ public class Rook extends GamePiece {
 	}
 
 	public void move(Location l) {
-
+		if(getMovements().contains(l)){
+			this.location = l;
+			pieces[location.getX()][location.getY()]=this;
+		}
+		else
+			JOptionPane.showMessageDialog(null, "Illegal Move");
 	}
 
 	public ArrayList<Location> getMovements() {
