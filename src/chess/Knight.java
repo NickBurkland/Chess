@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Knight extends GamePiece {
 
-	public Knight(Location location, Team team) {
-		super(location, team, game);
+	public Knight(Location location, Team team, GamePiece[][] pieces) {
+		super(location, team, "K", pieces);
 	}
 
 	public void move(Location l) {
@@ -13,7 +13,9 @@ public class Knight extends GamePiece {
 	}
 
 	public ArrayList<Location> getMovements() {
-		return null;
+		ArrayList<Location> moves = new ArrayList<Location>();
+		
+		return moves;
 	}
 
 }

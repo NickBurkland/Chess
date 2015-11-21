@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Pawn extends GamePiece{
-	public Pawn(Location location, Team team, GamePiece [] pieces){
+	public Pawn(Location location, Team team, GamePiece[][] pieces){
 		super(location, team, "P", pieces);
 	}
 
