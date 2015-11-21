@@ -1,13 +1,13 @@
 package chess;
 
-public abstract class GamePeice {
+public abstract class GamePiece {
     protected Location location;
     protected boolean alive = true;
     protected Team team;
     protected String image;
     protected GamePeice[];
 	
-    public GamePeice(Location location, Team team, String image, GamePeice[] peices) {
+    public GamePiece(Location location, Team team, String image, GamePeice[] peices) {
 	super();
 	this.location = location;
 	this.team = team;
