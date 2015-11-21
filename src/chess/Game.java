@@ -7,10 +7,15 @@ import javax.swing.JPanel;
 
 public class Game extends JPanel implements ActionListener {
 
-	@Override
+	GamePeice[][] peices = new GamePeice[8][8];
+	String name;
+	
+	public Game(String name) {
+		
+	}
+	
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+	
 	}
 
 }
