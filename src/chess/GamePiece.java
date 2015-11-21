@@ -1,18 +1,24 @@
 package chess;
 
-public abstract class GamePiece {
+public abstract class GamePeice {
     protected Location location;
     protected boolean alive = true;
     protected Team team;
     protected String image;
     protected GamePeice[];
+    protected Team opp;
 	
-    public GamePiece(Location location, Team team, String image, GamePeice[] peices) {
+    public GamePeice(Location location, Team team, String image, GamePeice[] peices) {
 	super();
 	this.location = location;
 	this.team = team;
 	this.image = image;
 	this.peices = peieces;
+
+	if(this.team == Team.BLACK)
+	    this.opp = Team.WHITE;
+	else
+	    this.opp = Team.BLACK;
     }
 	
     public abstract void move(Location l);

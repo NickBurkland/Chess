@@ -12,6 +12,7 @@ public class Pawn extends GamePiece{
 	    ArrayList<Location> locations = new ArrayList<Location>();
 	case 0:
 	    if(location.y==1){
+		if(pieces[location.x-1][location.y+1]!=null 
 		locations.add(location.shift(0,2));
 		locations.add(location.shift(0,1));
 	    }
