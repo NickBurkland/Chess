@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Rook extends GamePiece {
 
 	public Rook(Location location, Team team) {
-		super(location, team);
+		super(location, team, game);
 		
 	}
 	
