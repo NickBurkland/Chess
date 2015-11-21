@@ -1,5 +1,6 @@
 package chess;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,10 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 public class MainFrame extends JFrame implements ActionListener {
 
 	Game g = new Game("game1");
+	JPanel p = new JPanel(new BorderLayout());
 	
 	JMenuBar m = new JMenuBar();
 		JMenu file = new JMenu("File");
@@ -34,6 +37,9 @@ public class MainFrame extends JFrame implements ActionListener {
 				file.addSeparator();
 				file.add(exitF);exitF.addActionListener(this);
 			m.add(game);
+			
+		this.add(p);
+		p.add(g);
 			
 		revalidate();
 	}
