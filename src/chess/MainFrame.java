@@ -10,49 +10,49 @@ import javax.swing.JMenuItem;
 
 public class MainFrame extends JFrame implements ActionListener {
 
-	Game g = new Game("game1");
+    Game g = new Game("game1");
 	
-	JMenuBar m = new JMenuBar();
-		JMenu file = new JMenu("File");
-			JMenuItem newF = new JMenuItem("New");
-			JMenuItem openF = new JMenuItem("Open");
-			JMenuItem saveF = new JMenuItem("Save");
-			JMenuItem exitF = new JMenuItem("Exit");
-		JMenu game = new JMenu("Game");
+    JMenuBar m = new JMenuBar();
+    JMenu file = new JMenu("File");
+    JMenuItem newF = new JMenuItem("New");
+    JMenuItem openF = new JMenuItem("Open");
+    JMenuItem saveF = new JMenuItem("Save");
+    JMenuItem exitF = new JMenuItem("Exit");
+    JMenu game = new JMenu("Game");
 	
-	public MainFrame() {
-		setBounds(0,0,500,500);
-		setTitle("Chess");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+    public MainFrame() {
+	setBounds(0,0,500,500);
+	setTitle("Chess");
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setVisible(true);
 		
-		this.setJMenuBar(m);
-			m.add(file);
-				file.add(newF);newF.addActionListener(this);
-				file.add(openF);openF.addActionListener(this);
-				file.add(saveF);saveF.addActionListener(this);
-				file.addSeparator();
-				file.add(exitF);exitF.addActionListener(this);
-			m.add(game);
+	this.setJMenuBar(m);
+	m.add(file);
+	file.add(newF);newF.addActionListener(this);
+	file.add(openF);openF.addActionListener(this);
+	file.add(saveF);saveF.addActionListener(this);
+	file.addSeparator();
+	file.add(exitF);exitF.addActionListener(this);
+	m.add(game);
 			
-		revalidate();
+	revalidate();
+    }
+		
+    public void actionPerformed(ActionEvent e) {
+	String action = e.getActionCommand();
+		
+	if(action.equals("New")) {
+			
+	} else if(action.equals("Open")) {
+			
+	} else if(action.equals("Save")) {
+			
+	} else if(action.equals("Exit")) {
+	    System.exit(0);
 	}
-		
-	public void actionPerformed(ActionEvent e) {
-		String action = e.getActionCommand();
-		
-		if(action.equals("New")) {
-			
-		} else if(action.equals("Open")) {
-			
-		} else if(action.equals("Save")) {
-			
-		} else if(action.equals("Exit")) {
-			System.exit(0);
-		}
-	}
+    }
 	
-	public static void main(String[] args) {
-		new MainFrame();
-	}
+    public static void main(String[] args) {
+	new MainFrame();
+    }
 }
