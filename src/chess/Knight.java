@@ -9,7 +9,7 @@ public class Knight extends GamePeice {
 	}
 
 	public void move(Location l) {
-
+		
 	}
 
 	public ArrayList<Location> getMovements() {
