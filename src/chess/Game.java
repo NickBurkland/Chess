@@ -20,13 +20,11 @@ public class Game extends JPanel implements ActionListener {
 		for(int y=0; y<board.length; y++) {
 			for(int x=0; x<board.length; x++) {
 				board[x][y] = new JButton();
-				this.add(board[x][y]);
 				if(x%2 == y%2)
-					board[x][y].setText("W");
-//					board[x][y].setBackground(Color.WHITE);
+					board[x][y].setBackground(Color.WHITE);
 				else
-					board[x][y].setText("B");
-//					board[x][y].setBackground(Color.BLACK);
+					board[x][y].setBackground(Color.BLACK);
+				this.add(board[x][y]);
 				board[x][y].addActionListener(this);
 			}
 		}

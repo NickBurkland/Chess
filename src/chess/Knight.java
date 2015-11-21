@@ -2,6 +2,8 @@ package chess;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Knight extends GamePiece {
 
 	public Knight(Location location, Team team, GamePiece[][] pieces) {
@@ -9,11 +11,31 @@ public class Knight extends GamePiece {
 	}
 
 	public void move(Location l) {
-		
+		if(getMovements().contains(l)){
+			this.location = l;
+			pieces[l.getX()][l.getY()]=this;
+		}else
+			JOptionPane.showMessageDialog(null, "Illegal Move");
 	}
 
 	public ArrayList<Location> getMovements() {
 		ArrayList<Location> moves = new ArrayList<Location>();
+		
+		for(int i = -3; i <=3; i+=6){
+			for(int j = -2; j <=2; j+=4){
+				try{
+					Location l = location.shift(i,j);
+					if(pieces[l.getX()][l.getY()]==null || pieces[l.getX()][l.getY()].getTeam()==this.opp)
+						moves.add(l);
+				}catch(ArrayIndexOutOfBoundsException ex){/*Move is off Board*/}
+				try{
+					Location l = location.shift(j, i);
+					if(pieces[l.getX()][l.getY()]==null || pieces[l.getX()][l.getY()].getTeam()==this.opp)
+						moves.add(l);
+			
+				}catch(ArrayIndexOutOfBoundsException ex){/*Move is off Board*/}
+			}
+		}
 		
 		return moves;
 	}
