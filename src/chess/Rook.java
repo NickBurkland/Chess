@@ -2,7 +2,7 @@ package chess;
 
 import java.util.ArrayList;
 
-public class Rook extends GamePeice {
+public class Rook extends GamePiece {
 
 	public Rook(Location location, Team team) {
 		super(location, team);
@@ -14,7 +14,15 @@ public class Rook extends GamePeice {
 	}
 
 	public ArrayList<Location> getMovements() {
-		return null;
+		ArrayList<Location>  moves = new ArrayList<Location>();
+		
+		for(int i=1; i<8; i++) {
+			int n = location+i;
+			int e = location
+			
+			if()
+		}
+		return moves;
 	}
 
 }

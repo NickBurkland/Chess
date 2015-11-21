@@ -2,7 +2,7 @@ package chess;
 
 import java.util.ArrayList;
 
-public class Bishop extends GamePeice {
+public class Bishop extends GamePiece {
 
 	public Bishop(Location location, Team team) {
 		super(location, team);

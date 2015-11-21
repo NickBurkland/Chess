@@ -2,7 +2,7 @@ package chess;
 
 import java.util.ArrayList;
 
-public class Queen extends GamePeice {
+public class Queen extends GamePiece {
 
 	public Queen(Location location, Team team) {
 		super(location, team);

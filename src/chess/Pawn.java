@@ -1,12 +1,14 @@
 package chess;
 
-public class Pawn extends GamePiece{
-    public Pawn(Location location, Team team){
-	super(location, team, "P");
+import java.util.ArrayList;
+
+public class Pawn extends GamePiece {
+    public Pawn(Location location, Team team) {
+    	super(location, team, "P");
     }
 
-    public ArrayList<Location> getMovements(){
-	switch(team){
+    public ArrayList<Location> getMovements() {
+	switch(team) {
 	    ArrayList<Location> locations = new ArrayList<Location>();
 	case 0:
 	    if(location.y==1){
@@ -31,7 +33,7 @@ public class Pawn extends GamePiece{
     
     public void move(Location location){
 	if(getMovements().contains(location))
-	    this.location = location;
+	    super.location = location;
 	else
 	    throw new IllegalMoveException();
     }

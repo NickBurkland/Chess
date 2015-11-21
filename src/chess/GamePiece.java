@@ -2,12 +2,12 @@ package chess;
 
 import java.util.ArrayList;
 
-public abstract class GamePeice {
+public abstract class GamePiece {
 	protected Location location;
 	protected boolean alive = true;
 	protected Team team;
 	
-	public GamePeice(Location location, Team team) {
+	public GamePiece(Location location, Team team) {
 		super();
 		this.location = location;
 		this.team = team;

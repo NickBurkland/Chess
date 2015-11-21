@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class Game extends JPanel implements ActionListener {
 
-	GamePeice[][] peices = new GamePeice[8][8];
+	GamePiece[][] peices = new GamePiece[8][8];
 	JButton[][] board = new JButton[8][8];
 	String name;
 	
