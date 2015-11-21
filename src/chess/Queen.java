@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Queen extends GamePiece {
 
-	public Queen(Location location, Team team, GamePiece[] pieces) {
+	public Queen(Location location, Team team, GamePiece[][] pieces) {
 		super(location, team, "Q", pieces);
 	}
 

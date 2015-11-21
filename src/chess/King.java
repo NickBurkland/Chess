@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class King extends GamePiece {
 
-	public King(Location location, Team team, GamePiece[] pieces) {
+	public King(Location location, Team team, GamePiece[][] pieces) {
 		super(location, team, "K", pieces);
 	}
 

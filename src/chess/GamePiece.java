@@ -10,9 +10,9 @@ protected Location location;
     protected String image;
     protected Team opp;
 
-    protected GamePiece[] pieces;
+    protected GamePiece[][] pieces;
 	
-    public GamePiece(Location location, Team team, String image, GamePiece[] pieces) {
+    public GamePiece(Location location, Team team, String image, GamePiece[][] pieces) {
 		super();
 		this.location = location;
 		this.team = team;

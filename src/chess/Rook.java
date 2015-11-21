@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Rook extends GamePiece {
 
-	public Rook(Location location, Team team) {
-		super(location, team, game);
+	public Rook(Location location, Team team, GamePiece[][] pieces) {
+		super(location, team, "R", pieces);
 		
 	}
 	
@@ -21,7 +21,7 @@ public class Rook extends GamePiece {
 			int e = location.getX()+i;
 			int s = location.getY()-i;
 			int w = location.getX()-i;
-			if(n<9)
+			if(n>=0 && team!=pieces[location.getX()][location.getY()-n].getTeam());
 		}
 		return moves;
 	}
