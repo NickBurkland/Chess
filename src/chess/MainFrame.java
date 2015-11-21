@@ -24,7 +24,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		JMenu game = new JMenu("Game");
 	
 	public MainFrame() {
-		setBounds(0,0,500,500);
+		setBounds(0,0,800,800);
 		setTitle("Chess");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);

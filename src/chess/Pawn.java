@@ -12,7 +12,7 @@ public class Pawn extends GamePiece{
     public ArrayList<Location> getMovements() {
 	ArrayList<Location> locations = new ArrayList<Location>();
 	switch(team.ordinal()) {
-	case 0:	
+	case 1:	
 	    //Move forward one square
 	    Location lo = location.shift(0,1);
 	   
@@ -33,7 +33,7 @@ public class Pawn extends GamePiece{
 	    if(lo.getX()>=0&&pieces[lo.getX()][lo.getY()]!=null&&pieces[lo.getX()][lo.getY()].getTeam()==this.opp)
 		locations.add(lo);	    
 	    break;
-	case 1:
+	case 0:
 	    //Move forward one square
 	    Location o = location.shift(0,-1);
 	    

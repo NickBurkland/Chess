@@ -13,7 +13,7 @@ public class Game extends JPanel implements ActionListener {
 	GamePiece[][] pieces = new GamePiece[8][8];
 	JButton[][] board = new JButton[8][8];
 	String name;
-	
+	GamePiece firstPiece;
 		
 	public Game(String name) {
 		this.setLayout(new GridLayout(8,8,0,0));
@@ -51,16 +51,46 @@ public class Game extends JPanel implements ActionListener {
 		pieces[4][7]=new King(new Location(4,7),Team.BLACK, pieces);
 		
 		for(int x = 0; x < pieces.length; x++){
-			pieces[x][1]= new Pawn(new Location(x,1),Team.WHITE, pieces);
+//			pieces[x][1]= new Pawn(new Location(x,1),Team.WHITE, pieces);
 			pieces[x][6]= new Pawn(new Location(x,6),Team.BLACK, pieces);
 		}			
+		
+		this.setLayout(new GridLayout(8,8,0,0));
+		for(int y=0; y<board.length; y++) {
+			for(int x=0; x<board.length; x++) {
+				board[x][y] = new JButton();
+				this.add(board[x][y]);
+				if(x%2 == y%2)
+//					board[x][y].setText("W");
+					board[x][y].setBackground(Color.WHITE);
+				else
+//					board[x][y].setText("B");
+					board[x][y].setBackground(Color.BLACK);
+				board[x][y].addActionListener(this);
+				if(pieces[x][y] != null) 
+					board[x][y].setText(pieces[x][y].getImage());
+			}
+		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		for(int y=0; y<board.length; y++) {
 			for(int x=0; x<board.length; x++) {
 				if(e.getSource() == board[x][y]) {
-					// TODO
+					System.out.println(x + ", " + y);
+					if(firstPiece == null && pieces[x][y] != null) {
+						firstPiece = pieces[x][y];
+					} else {
+						if(firstPiece.getMovements().contains(new Location(x, y))) { // if valid move
+							int i = firstPiece.location.getX();
+							int j = firstPiece.location.getY();
+							board[x][y] = board[i][j];
+							board[i][j].setText("");
+							pieces[x][y] = pieces[i][j];
+							pieces[i][j] = null;
+						}
+						firstPiece = null;
+					}
 				}
 			}
 		}
