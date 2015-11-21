@@ -5,39 +5,65 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Pawn extends GamePiece{
-	public Pawn(Location location, Team team, GamePiece [] pieces){
-		super(location, team, "P", pieces);
-	}
+    public Pawn(Location location, Team team, GamePiece [] pieces){
+	super(location, team, "P", pieces);
+    }
 
-	public ArrayList<Location> getMovements() {
-		ArrayList<Location> locations = new ArrayList<Location>();
-		switch(team.ordinal()) {
-		case 0:
-			if(location.y==1){
-				locations.add(location.shift(0,2));
-				locations.add(location.shift(0,1));
-			}
-			else{
-				locations.add(location.shift(0,1));
-			}
-			break;
-		case 1:
-			if(location.y==6){
-				locations.add(location.shift(0,-2));
-				locations.add(location.shift(0,-1));
-			}
-			else{
-				locations.add(location.shift(0,-1));
-			}
-			break;
-		}
-		return locations;
-	}
+    public ArrayList<Location> getMovements() {
+	ArrayList<Location> locations = new ArrayList<Location>();
+	switch(team.ordinal()) {
+	case 0:	
+	    //Move forward one square
+	    Location lo = location.shift(0,1);
+	   
+	    if(pieces[lo.getX()][lo.getY()]==null){
+		locations.add(lo);
+		lo = location.shift(0,2);
+		if(pieces[lo.getX()][lo.getY()]==null&&location.getY()==1)
+		    locations.add(lo);
+	    }
 
-	public void move(Location location){
-		if(getMovements().contains(location))
-			super.location = location;
-		else
-			JOptionPane.showMessageDialog(null, "Illegal Move");
+	    //kill piece diagonal right
+	    lo =location.shift(1,1); 
+	    if(lo.getX()<pieces.length&&pieces[lo.getX()][lo.getY()]!=null&&pieces[lo.getX()][lo.getY()].getTeam()==this.opp)
+		locations.add(lo);
+	
+	    //kill piece diagonal left
+	    lo =location.shift(-1,1); 
+	    if(lo.getx()>=0&&pieces[lo.getX()][lo.getY()]!=null&&pieces[lo.getX()][lo.getY()].getTeam()==this.opp)
+		locations.add(lo);	    
+	    break;
+	case 1:
+	    //Move forward one square
+	    Location lo = location.shift(0,-1);
+	    
+	    if(pieces[lo.getX()][lo.getY()]==null){
+		locations.add(lo);
+		lo = location.shift(0,-2);
+		if(pieces[lo.getX()][lo.getY()]==null&&location.getY()==6)
+		    locations.add(lo);
+	    }
+	    
+	    //kill piece diagonal right
+	    lo =location.shift(1,-1); 
+	    if(lo.getX()<peices.length&&pieces[lo.getX()][lo.getY()]!=null&&pieces[lo.getX()][lo.getY()].getTeam()==this.opp)
+		locations.add(lo);
+	    
+	    //kill piece diagonal left
+	    lo =location.shift(-1,-1); 
+	    if(lo.getX()>0&&pieces[lo.getX()][lo.getY()]!=null&&pieces[lo.getX()][lo.getY()].getTeam()==this.opp)
+		locations.add(lo);
+	    break;
 	}
+	return locations;
+    }
+
+    public void move(Location location){
+	if(getMovements().contains(location)){
+	    this.location = location;
+	    pieces[location.getX()][location.getY()]=this;
+	}
+	else
+	    JOptionPane.showMessageDialog(null, "Illegal Move");
+    }
 }
