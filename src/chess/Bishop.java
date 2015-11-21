@@ -1,0 +1,19 @@
+package chess;
+
+import java.util.ArrayList;
+
+public class Bishop extends GamePeice {
+
+	public Bishop(Location location, Team team) {
+		super(location, team);
+	}
+
+	public void move(Location l) {
+
+	}
+
+	public ArrayList<Location> getMovements() {
+		return null;
+	}
+
+}

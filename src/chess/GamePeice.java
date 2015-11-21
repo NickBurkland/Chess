@@ -1,5 +1,7 @@
 package chess;
 
+import java.util.ArrayList;
+
 public abstract class GamePeice {
 	protected Location location;
 	protected boolean alive = true;
@@ -13,7 +15,7 @@ public abstract class GamePeice {
 	
 	public abstract void move(Location l);
 	
-	public abstract Location[] getMovements();
+	public abstract ArrayList<Location> getMovements();
 	
 	public Team getTeam() {
 		return team;
