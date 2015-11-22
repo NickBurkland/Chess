@@ -2,6 +2,8 @@ package chess;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public abstract class GamePiece {
 
 	protected Location location;
@@ -24,7 +26,14 @@ public abstract class GamePiece {
 
 	}
 
-	public abstract void move(Location l);
+	public void move(Location l){
+		if(getMovements().contains(l)){
+			this.location = l;
+			pieces[location.getX()][location.getY()]=this;
+		}
+		else
+			JOptionPane.showMessageDialog(null, "Illegal Move");
+	}
 
 	public abstract ArrayList<Location> getMovements();
 

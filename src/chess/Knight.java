@@ -10,14 +10,6 @@ public class Knight extends GamePiece {
 		super(location, team, "K", pieces);
 	}
 
-	public void move(Location l) {
-		if(getMovements().contains(l)){
-			this.location = l;
-			pieces[l.getX()][l.getY()]=this;
-		}else
-			JOptionPane.showMessageDialog(null, "Illegal Move");
-	}
-
 	public ArrayList<Location> getMovements() {
 		ArrayList<Location> moves = new ArrayList<Location>();
 		

@@ -11,15 +11,6 @@ public class Rook extends GamePiece {
 
 	}
 
-	public void move(Location l) {
-		if(getMovements().contains(l)){
-			this.location = l;
-			pieces[location.getX()][location.getY()]=this;
-		}
-		else
-			JOptionPane.showMessageDialog(null, "Illegal Move");
-	}
-
 	public ArrayList<Location> getMovements() {
 		ArrayList<Location>  moves = new ArrayList<Location>();
 		boolean mn = true, ms=true, me=true, mw=true;
