@@ -15,7 +15,6 @@ public class Pawn extends GamePiece{
 		case 1:	
 			//Move forward one square
 			Location lo = location.shift(0,1);
-
 			if(pieces[lo.getX()][lo.getY()]==null){
 				locations.add(lo);
 				lo = location.shift(0,2);

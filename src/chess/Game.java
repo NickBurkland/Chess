@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,20 +17,8 @@ public class Game extends JPanel implements ActionListener {
 	GamePiece firstPiece;
 		
 	public Game(String name) {
-		this.setLayout(new GridLayout(8,8,0,0));
-		for(int y=0; y<board.length; y++) {
-			for(int x=0; x<board.length; x++) {
-				board[x][y] = new JButton();
-				if(x%2 == y%2)
-					board[x][y].setBackground(Color.WHITE);
-				else
-					board[x][y].setBackground(Color.BLACK);
-				this.add(board[x][y]);
-				board[x][y].addActionListener(this);
-			}
-		}
-
 		pieces[0][0]=new Rook(new Location(0,0),Team.WHITE, pieces);
+		System.out.println(pieces[0][0].location);
 		pieces[7][0]=new Rook(new Location(7,0),Team.WHITE, pieces);
 		pieces[0][7]=new Rook(new Location(0,7),Team.BLACK, pieces);
 		pieces[7][7]=new Rook(new Location(7,7),Team.BLACK, pieces);
@@ -51,20 +40,19 @@ public class Game extends JPanel implements ActionListener {
 		pieces[4][7]=new King(new Location(4,7),Team.BLACK, pieces);
 		
 		for(int x = 0; x < pieces.length; x++){
-//			pieces[x][1]= new Pawn(new Location(x,1),Team.WHITE, pieces);
+			pieces[x][1]= new Pawn(new Location(x,1),Team.WHITE, pieces);
 			pieces[x][6]= new Pawn(new Location(x,6),Team.BLACK, pieces);
 		}			
 		
 		this.setLayout(new GridLayout(8,8,0,0));
+		
 		for(int y=0; y<board.length; y++) {
 			for(int x=0; x<board.length; x++) {
 				board[x][y] = new JButton();
 				this.add(board[x][y]);
 				if(x%2 == y%2)
-//					board[x][y].setText("W");
 					board[x][y].setBackground(Color.WHITE);
 				else
-//					board[x][y].setText("B");
 					board[x][y].setBackground(Color.BLACK);
 				board[x][y].addActionListener(this);
 				if(pieces[x][y] != null) 
@@ -80,15 +68,26 @@ public class Game extends JPanel implements ActionListener {
 					System.out.println(x + ", " + y);
 					if(firstPiece == null && pieces[x][y] != null) {
 						firstPiece = pieces[x][y];
-					} else {
-						if(firstPiece.getMovements().contains(new Location(x, y))) { // if valid move
-							int i = firstPiece.location.getX();
-							int j = firstPiece.location.getY();
-							board[x][y] = board[i][j];
-							board[i][j].setText("");
-							pieces[x][y] = pieces[i][j];
-							pieces[i][j] = null;
+						System.out.println(pieces[x][y].getImage()+" "+pieces[x][y].location);
+						ArrayList<Location> moves = firstPiece.getMovements();
+						for(Location i : moves){
+							System.out.println(i);
 						}
+					} else {
+						board[firstPiece.location.getX()][firstPiece.location.getY()].setText("");
+						System.out.println(firstPiece.image+" "+firstPiece.location);
+						ArrayList<Location> moves = firstPiece.getMovements();
+						System.out.println("Desired Move "+new Location(x,y));
+						System.out.print("Possible Moves ");
+						for(Location l: moves){
+							System.out.print(l +" ");
+						}
+						
+						System.out.println();
+						
+						firstPiece.move(new Location(x,y));
+						System.out.println("Moved to "+firstPiece.location);
+						board[firstPiece.location.getX()][firstPiece.location.getY()].setText(firstPiece.getImage());
 						firstPiece = null;
 					}
 				}

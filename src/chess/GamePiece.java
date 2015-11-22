@@ -13,7 +13,6 @@ public abstract class GamePiece {
 	protected GamePiece[][] pieces;
 
 	public GamePiece(Location location, Team team, String image, GamePiece[][] pieces) {
-		super();
 		this.location = location;
 		this.team = team;
 		this.image = image;
@@ -28,10 +27,10 @@ public abstract class GamePiece {
 
 	public void move(Location l){
 		if(getMovements().contains(l)){
+			pieces[location.getX()][location.getY()]=null;
 			this.location = l;
-			pieces[location.getX()][location.getY()]=this;
-		}
-		else
+			pieces[l.getX()][l.getY()]=this;
+		}else
 			JOptionPane.showMessageDialog(null, "Illegal Move");
 	}
 
@@ -40,8 +39,6 @@ public abstract class GamePiece {
 	public Team getTeam() {
 		return team;
 	}
-
-
 	public String getImage(){
 		return image;
 	}

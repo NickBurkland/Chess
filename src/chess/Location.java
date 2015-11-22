@@ -3,34 +3,32 @@ package chess;
 public class Location {
     int x = 0;
     int y = 0;
-    
-    public Location(char x, int y) {
-	this.x = (int)(x-'A');
-	this.y = y;
-    }
 
     public Location(int x, int y){
-	this.x = x;
-	this.y = y;
-    }
-
-    public Location shift(char x, int y){
-    	return new Location((char)this.x+x, this.y+y);
+    	this.x = x;
+    	this.y = y;
     }
 
     public Location shift(int x, int y){
-	return new Location(this.x+x,this.y+y);
+    	return new Location(this.x+x,this.y+y);
     }
 	
     public int getX() {
-	return x;
+    	return x;
     }
 	
     public int getY() {
-	return y;
+    	return y;
     }
     
+    @Override
     public String toString() {
-    	return new String(x+1 + "" + y+1);
+    	return new String((x+1) + " " + (y+1));
+    }
+    
+    @Override
+    public  boolean equals(Object o){
+    	Location l = (Location)o;
+    	return l.x==x&&l.y==y;
     }
 }
