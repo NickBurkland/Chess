@@ -20,7 +20,7 @@ public class Location {
     public int getY() {
     	return y;
     }
-    
+     
     @Override
     public String toString() {
     	return new String((x+1) + " " + (y+1));
